@@ -1,0 +1,21 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi
+uvicorn[standard]
+jinja2
+sqlalchemy>=2.0.36
+psycopg2-binary
+bcrypt
+python-jose[cryptography]
+python-multipart
+pydantic
+feedparser
+reportlab
+pillow
+python-dotenv
+email-validator
+gunicorn
+torch
+transformers
+numpy
+joblib
+pandas

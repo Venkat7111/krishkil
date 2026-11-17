@@ -1,0 +1,84 @@
+{% extends "layouts/app.html" %}
+{% block title %}Dashboard · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-6 fade-up">
+  <div>
+    <h1 id="dash-greeting" class="font-display text-2xl font-bold">Namaste</h1>
+    <p class="muted text-sm mt-1" data-i18n="dashboard.subtitle">Here's what's happening on your farm today.</p>
+  </div>
+
+  <div>
+    <h2 class="text-sm font-semibold muted mb-3" data-i18n="dashboard.quickActions">Quick Actions</h2>
+    <div class="grid-6 sm:grid-6">
+      <a href="/app/disease-detection" class="quick-action glass">
+        <span class="text-primary text-xl">◎</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.uploadLeaf">Upload Leaf</span>
+      </a>
+      <a href="/app/chat" class="quick-action glass">
+        <span class="text-primary text-xl">💬</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.askAi">Ask AI</span>
+      </a>
+      <a href="/app/crop-recommendation" class="quick-action glass">
+        <span class="text-primary text-xl">🌱</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.cropPick">Crop Pick</span>
+      </a>
+      <a href="/app/irrigation" class="quick-action glass">
+        <span class="text-primary text-xl">💧</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.irrigation">Irrigation</span>
+      </a>
+      <a href="/app/fertilizer" class="quick-action glass">
+        <span class="text-primary text-xl">⚗</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.fertilizer">Fertilizer</span>
+      </a>
+      <a href="/app/reports" class="quick-action glass">
+        <span class="text-primary text-xl">📄</span>
+        <span class="text-xs text-center muted" data-i18n="dashboard.reports">Reports</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="lg:grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+    <div id="weather-card" class="card leaf">
+      <p class="muted text-sm">Loading weather...</p>
+    </div>
+    <div class="card leaf">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-secondary">🌱</span>
+        <h3 class="font-display font-semibold" data-i18n="dashboard.cropHealth">Crop Health</h3>
+      </div>
+      <p class="text-3xl font-display font-bold text-primary">Good</p>
+      <p class="text-sm muted mt-1">2 fields monitored · no active alerts</p>
+    </div>
+    <div class="card leaf">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-accent">📈</span>
+        <h3 class="font-display font-semibold" data-i18n="dashboard.marketPrices">Market Prices</h3>
+      </div>
+      <div id="market-mini" class="space-y-2"></div>
+      <a href="/app/market" class="text-xs text-primary mt-3 inline-block" data-i18n="dashboard.viewAllPrices">View all prices →</a>
+    </div>
+  </div>
+
+  <div class="lg:grid-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-primary">✓</span>
+        <h3 class="font-display font-semibold" data-i18n="dashboard.todaysTasks">Today's Tasks</h3>
+      </div>
+      <ul class="space-y-2">
+        <li class="flex items-center gap-2 text-sm"><input type="checkbox" /> Apply second dose of urea to Field 2</li>
+        <li class="flex items-center gap-2 text-sm"><input type="checkbox" /> Check drip irrigation line for leaks</li>
+        <li class="flex items-center gap-2 text-sm"><input type="checkbox" checked /> <span class="line-through muted">Photograph tomato leaves showing spots</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-clay">🏛</span>
+        <h3 class="font-display font-semibold" data-i18n="dashboard.govtSchemes">Government Schemes</h3>
+      </div>
+      <p class="text-sm muted">PM-KISAN 6th installment credited this week for eligible farmers.</p>
+      <a href="/app/schemes" class="text-xs text-primary mt-3 inline-block" data-i18n="dashboard.browseSchemes">Browse schemes →</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

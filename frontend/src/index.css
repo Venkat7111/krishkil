@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-primary: #2E7D32;
+  --color-primary-dark: #1B5E20;
+  --color-secondary: #4CAF50;
+  --color-accent: #FFC107;
+  --color-clay: #A66A3D;
+
+  --color-paper: #F7F5EF;
+  --color-paper-dim: #EFEBE0;
+  --color-soil: #14170F;
+  --color-soil-raised: #1D2318;
+
+  --radius-leaf: 28px 8px 28px 8px;
+}
+
+:root {
+  color-scheme: light;
+}
+:root.dark {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-soil);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: var(--color-soil);
+  color: var(--color-paper);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) transparent;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono-data { font-family: var(--font-mono); }
+
+/* Leaf-corner signature radius used on primary cards */
+.leaf-corner {
+  border-radius: 28px 8px 28px 8px;
+}
+
+/* Glassmorphism helper */
+.glass {
+  background: color-mix(in srgb, var(--color-paper) 55%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, currentColor 8%, transparent);
+}
+.dark .glass {
+  background: color-mix(in srgb, var(--color-soil-raised) 55%, transparent);
+}
+
+/* Vein-growth divider animation (signature motif) */
+@keyframes vein-grow {
+  from { stroke-dashoffset: 400; }
+  to { stroke-dashoffset: 0; }
+}
+.vein-path {
+  stroke-dasharray: 400;
+  animation: vein-grow 2.2s ease forwards;
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-secondary) 25%, transparent), transparent);
+  animation: shimmer 1.6s infinite;
+}

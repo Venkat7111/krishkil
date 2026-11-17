@@ -1,0 +1,15 @@
+{% extends "layouts/app.html" %}
+{% block title %}News · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <div>
+      <h1 class="font-display text-2xl font-bold">Agriculture News</h1>
+      <p class="muted text-sm mt-1">Headlines from trusted agri sources.</p>
+    </div>
+    <button type="button" id="news-refresh" class="btn btn-outline">Refresh</button>
+  </div>
+  <input id="news-search" class="search-input" style="max-width:100%" placeholder="Search news..." />
+  <div id="news-list"></div>
+</div>
+{% endblock %}

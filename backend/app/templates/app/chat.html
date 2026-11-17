@@ -1,0 +1,32 @@
+{% extends "layouts/app.html" %}
+{% block title %}AI Chat · KrishiSahay{% endblock %}
+{% block content %}
+<div class="chat-shell fade-up">
+  <div class="flex items-center justify-between gap-3 px-2 flex-wrap">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="chip">✦ RAG Agronomist AI</span>
+      <a href="/chat/pop-pdf" target="_blank" class="text-xs font-semibold muted underline">Download PoP PDF Handbook</a>
+    </div>
+    <!-- Language selector -->
+    <select id="chat-lang-select" class="select select-sm" title="Chat language">
+      <option value="en">🌐 English</option>
+      <option value="te">🇮🇳 తెలుగు</option>
+      <option value="hi">🇮🇳 हिन्दी</option>
+      <option value="ta">🇮🇳 தமிழ்</option>
+      <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+      <option value="mr">🇮🇳 मराठी</option>
+      <option value="bn">🇮🇳 বাংলা</option>
+    </select>
+  </div>
+  <div id="chat-messages" class="chat-messages glass rounded-2xl">
+    <!-- greeting text is set dynamically by pages.js via i18n -->
+    <div class="bubble assistant" data-i18n="chat.greeting">Namaste! I'm your KrishiSahay AI agronomist. Ask me about NPK fertilizers, pest diseases, or market prices for rice, cotton, tomato crops.</div>
+  </div>
+  <div id="chat-suggestions" class="px-1"></div>
+  <form id="chat-form" class="chat-input-bar">
+    <button type="button" id="mic-btn" class="icon-btn" title="Voice">🎤</button>
+    <input id="chat-input" type="text" data-i18n-placeholder="chat.placeholder" placeholder="Ask about crops, disease, fertilizer..." autocomplete="off" />
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
+{% endblock %}

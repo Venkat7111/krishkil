@@ -1,0 +1,73 @@
+{% extends "layouts/auth.html" %}
+{% block title %}Register · KrishiSahay{% endblock %}
+{% block content %}
+<h2 class="font-display text-2xl font-semibold mb-1" data-i18n="auth.registerTitle">Create your account</h2>
+<p class="text-sm muted mb-6" data-i18n="auth.registerSubtitle">Tell us about your farm to get tailored advice.</p>
+<form id="register-form" class="space-y-4">
+  <div class="field">
+    <label>Full Name</label>
+    <input class="field-input" name="fullName" required />
+  </div>
+  <div class="grid-2">
+    <div class="field">
+      <label>Email</label>
+      <input class="field-input" type="email" name="email" required />
+    </div>
+    <div class="field">
+      <label>Phone Number</label>
+      <input class="field-input" name="phone" required />
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="field">
+      <label>Country</label>
+      <input class="field-input" name="country" value="India" required />
+    </div>
+    <div class="field">
+      <label>State</label>
+      <input class="field-input" name="state" value="Telangana" required />
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="field">
+      <label>District</label>
+      <input class="field-input" name="district" required />
+    </div>
+    <div class="field">
+      <label>Village</label>
+      <input class="field-input" name="village" required />
+    </div>
+  </div>
+  <div class="field">
+    <label>Preferred Language</label>
+    <select class="field-input" name="preferredLanguage">
+      <option value="en">English</option>
+      <option value="te">తెలుగు</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input class="field-input" type="password" name="password" id="password" required minlength="6" />
+  </div>
+  <div>
+    <div id="strength-bars" class="progress-bars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p id="strength-label" class="text-xs muted mt-1"></p>
+  </div>
+  <div class="field">
+    <label>Confirm Password</label>
+    <input class="field-input" type="password" name="confirmPassword" required minlength="6" />
+  </div>
+  <label class="flex items-start gap-2 text-sm muted">
+    <input type="checkbox" name="terms" class="mt-1" />
+    I agree to the Terms & Conditions and Privacy Policy
+  </label>
+  <button type="submit" class="btn btn-primary btn-full" data-i18n="auth.createAccount">Create Account</button>
+</form>
+<p class="text-sm text-center muted mt-6">
+  <span data-i18n="auth.haveAccount">Already have an account?</span>
+  <a href="/login" class="text-primary font-medium">Login</a>
+</p>
+{% endblock %}

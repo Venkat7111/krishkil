@@ -1,0 +1,18 @@
+{% extends "layouts/app.html" %}
+{% block title %}Profile · KrishiSahay{% endblock %}
+{% block content %}
+<div class="max-w-3xl fade-up">
+  <h1 class="font-display text-2xl font-bold mb-1">Profile</h1>
+  <p class="muted text-sm mb-5">Manage your farm profile details.</p>
+  <form id="profile-form" class="card space-y-4">
+    <div class="field"><label>Full name</label><input class="field-input" name="name" /></div>
+    <div class="field"><label>Email</label><input class="field-input" type="email" name="email" /></div>
+    <div class="field"><label>Village</label><input class="field-input" name="village" /></div>
+    <div class="flex gap-2 flex-wrap">
+      <button type="submit" class="btn btn-primary">Save profile</button>
+      <button type="button" class="btn btn-ghost text-red" data-logout>Logout</button>
+      <button type="button" id="delete-account" class="btn btn-outline text-red">Clear session</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

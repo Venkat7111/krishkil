@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Offline · KrishiSahay{% endblock %}
+{% block body %}
+<div class="min-h-screen flex items-center justify-center p-6 text-center" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem">
+  <div class="card glass max-w-md w-full p-8 space-y-4 fade-up" style="max-width:28rem;padding:2rem">
+    <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-3xl" style="width:4.5rem;height:4.5rem;margin:0 auto;border-radius:9999px;background:rgba(22,163,74,0.15);display:flex;align-items:center;justify-content:center">
+      🌾
+    </div>
+    <h1 class="font-display text-2xl font-bold">You are currently offline</h1>
+    <p class="muted text-sm leading-relaxed">
+      KrishiSahay keeps working without internet! You can view previously loaded dashboards, market prices, and guides. New AI requests and live sync will resume once connection is restored.
+    </p>
+
+    <div class="p-3 rounded-lg text-left text-xs space-y-2" style="background:var(--color-surface, rgba(0,0,0,0.03));border:1px solid var(--color-border)">
+      <p class="font-semibold text-primary">💡 Offline Ready Tips:</p>
+      <p>• Previously visited pages remain accessible via your device's cache.</p>
+      <p>• Take leaf photos now; you can upload them for analysis the moment you reconnect.</p>
+    </div>
+
+    <div class="flex flex-col gap-2 pt-2">
+      <button type="button" class="btn btn-primary w-full" onclick="window.location.reload()">
+        ↻ Check Connection Again
+      </button>
+      <a href="/app" class="btn btn-outline w-full text-center">
+        Go to Cached App
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('online', function() {
+    KS.toast('Internet connection restored! Reloading...', 'success');
+    setTimeout(function() {
+      window.location.reload();
+    }, 1200);
+  });
+</script>
+{% endblock %}

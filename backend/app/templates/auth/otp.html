@@ -1,0 +1,15 @@
+{% extends "layouts/auth.html" %}
+{% block title %}OTP Verification · KrishiSahay{% endblock %}
+{% block content %}
+<h2 class="font-display text-2xl font-semibold mb-1">Verify OTP</h2>
+<p class="text-sm muted mb-6">Enter the 6-digit code sent to <strong id="otp-email"></strong></p>
+<form id="otp-form" class="space-y-4">
+  <div class="flex gap-2 justify-center">
+    {% for i in range(6) %}
+    <input class="field-input otp-digit text-center" style="width:2.75rem;padding:.7rem .2rem;font-size:1.1rem" maxlength="1" inputmode="numeric" required />
+    {% endfor %}
+  </div>
+  <button type="submit" class="btn btn-primary btn-full">Verify</button>
+  <button type="button" id="resend-otp" class="btn btn-ghost btn-full">Resend OTP</button>
+</form>
+{% endblock %}

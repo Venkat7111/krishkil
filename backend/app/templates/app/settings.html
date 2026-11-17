@@ -1,0 +1,44 @@
+{% extends "layouts/app.html" %}
+{% block title %}Settings · KrishiSahay{% endblock %}
+{% block content %}
+<div class="max-w-3xl space-y-4 fade-up">
+  <h1 class="font-display text-2xl font-bold">Settings</h1>
+  <div class="card flex items-center justify-between">
+    <div>
+      <p class="font-semibold" data-i18n="settings.darkMode">Dark Mode</p>
+      <p class="text-sm muted">Switch between light and dark themes</p>
+    </div>
+    <input id="dark-toggle" type="checkbox" />
+  </div>
+  <div class="card flex items-center justify-between gap-3">
+    <div>
+      <p class="font-semibold" data-i18n="settings.language">Language</p>
+      <p class="text-sm muted">App language for labels</p>
+    </div>
+    <select id="settings-lang" class="select-sm">
+      <option value="en">English</option>
+      <option value="te">తెలుగు</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+  <div class="card flex items-center justify-between">
+    <div>
+      <p class="font-semibold" data-i18n="settings.notifications">Notifications</p>
+      <p class="text-sm muted">Weather and scheme alerts</p>
+    </div>
+    <input type="checkbox" checked />
+  </div>
+  <div class="card">
+    <p class="font-semibold" data-i18n="settings.about">About KrishiSahay</p>
+    <p class="text-sm muted mt-1">Smart farming assistant with disease detection, crop advice, weather, market prices, and RAG chat.</p>
+  </div>
+  <div class="card">
+    <p class="font-semibold" data-i18n="settings.help">Help & Support</p>
+    <p class="text-sm muted mt-1">Email support@krishisahay.org</p>
+  </div>
+  <div class="card">
+    <p class="font-semibold" data-i18n="settings.feedback">Send Feedback</p>
+    <p class="text-sm muted mt-1">Tell us how we can improve your farm workflow.</p>
+  </div>
+</div>
+{% endblock %}

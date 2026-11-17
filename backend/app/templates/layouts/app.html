@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block body %}
+<script>if (!localStorage.getItem('ks_user') && localStorage.getItem('ks_guest') !== '1') { location.href = '/welcome'; }</script>
+<div class="app-shell">
+  <div id="sidebar-overlay" class="fixed inset-0 bg-overlay z-30 hidden lg:hidden" style="z-index:30"></div>
+  <aside id="sidebar" class="sidebar glass border-r">
+    <div class="flex items-center justify-between px-5 py-5">
+      <div class="flex items-center gap-2">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 20h10"/><path d="M12 20V4"/><path d="M12 4c-3 4-6 5-8 5"/><path d="M12 8c3 3 5 4 7 4"/></svg>
+        <span class="font-display font-bold text-lg">KrishiSahay</span>
+      </div>
+      <button class="icon-btn lg:hidden" data-close-sidebar aria-label="Close">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-3 space-y-1">
+      {% set links = [
+        ('/app', 'nav.home', '⌂'),
+        ('/app/dashboard', 'nav.dashboard', '▦'),
+        ('/app/chat', 'nav.chat', '💬'),
+        ('/app/disease-detection', 'nav.disease', '◎'),
+        ('/app/crop-recommendation', 'nav.crop', '🌱'),
+        ('/app/weather', 'nav.weather', '☁'),
+        ('/app/irrigation', 'nav.irrigation', '💧'),
+        ('/app/fertilizer', 'nav.fertilizer', '⚗'),
+        ('/app/market', 'nav.market', '📈'),
+        ('/app/news', 'nav.news', '📰'),
+        ('/app/schemes', 'nav.schemes', '🏛'),
+        ('/app/reports', 'nav.reports', '📄'),
+        ('/app/profile', 'nav.profile', '👤'),
+        ('/app/settings', 'nav.settings', '⚙'),
+      ] %}
+      {% for href, key, icon in links %}
+      <a href="{{ href }}" class="nav-link {% if active == href or (href == '/app' and active == '/app') %}active{% endif %}" {% if href == '/app' %}data-end{% endif %}>
+        <span class="shrink-0">{{ icon }}</span>
+        <span data-i18n="{{ key }}">{{ key }}</span>
+      </a>
+      {% endfor %}
+    </nav>
+    <div class="p-3 border-t space-y-1">
+      <button type="button" id="pwa-install-btn" class="nav-link text-primary w-full hidden" style="font-weight:600">
+        <span>📲</span> <span>Install App</span>
+      </button>
+      <button type="button" class="nav-link text-red w-full" data-logout>
+        <span>⎋</span> <span data-i18n="nav.logout">Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="navbar glass">
+      <div class="flex items-center gap-3 flex-1">
+        <button id="menu-btn" class="icon-btn lg:hidden" aria-label="Menu">☰</button>
+        <input class="search-input hidden sm:block" style="display:none" data-i18n-placeholder="navbar.search" placeholder="Search..." />
+        <input class="search-input" data-i18n-placeholder="navbar.search" placeholder="Search crops, schemes, reports..." style="max-width:22rem" />
+      </div>
+      <div class="flex items-center gap-2">
+        <select id="lang-select" class="select-sm">
+          <option value="en">🌐 English</option>
+          <option value="te">🇮🇳 తెలుగు</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="ta">🇮🇳 தமிழ்</option>
+          <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+          <option value="mr">🇮🇳 मराठी</option>
+          <option value="bn">🇮🇳 বাংলা</option>
+        </select>
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="Theme">◐</button>
+        <div class="flex items-center gap-2">
+          <div id="nav-avatar" class="avatar">F</div>
+          <span id="nav-name" class="text-sm font-medium hidden" style="display:none">Farmer</span>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">© 2026 KrishiSahay · Smart Farming Powered by AI</footer>
+  </div>
+</div>
+{% endblock %}

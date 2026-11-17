@@ -1,0 +1,14 @@
+{% extends "layouts/app.html" %}
+{% block title %}Reports · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <div>
+      <h1 class="font-display text-2xl font-bold">Farm Reports</h1>
+      <p class="muted text-sm mt-1">Generate and download PDF farm summaries.</p>
+    </div>
+    <button type="button" id="generate-report" class="btn btn-primary">Generate Farm Summary</button>
+  </div>
+  <div id="reports-list"></div>
+</div>
+{% endblock %}

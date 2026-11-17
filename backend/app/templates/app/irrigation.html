@@ -1,0 +1,36 @@
+{% extends "layouts/app.html" %}
+{% block title %}Irrigation · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Irrigation Planner</h1>
+    <p class="muted text-sm mt-1">Get a weekly watering schedule matched to crop stage and soil.</p>
+  </div>
+  <form id="irrigation-form" class="card grid-2">
+    <div class="field">
+      <label>Crop</label>
+      <select class="field-input" name="crop">
+        <option>Rice</option><option>Wheat</option><option>Cotton</option><option>Tomato</option><option>Maize</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Growth stage</label>
+      <select class="field-input" name="stage">
+        <option>Seedling</option><option>Vegetative</option><option>Flowering</option><option>Fruiting</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Soil type</label>
+      <select class="field-input" name="soilType">
+        <option>Loamy</option><option>Clay</option><option>Sandy</option><option>Black</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Field size (acres)</label>
+      <input class="field-input" type="number" name="fieldSize" value="1" step="any" />
+    </div>
+    <button type="submit" class="btn btn-primary col-span-2">Update schedule</button>
+  </form>
+  <div id="irrigation-result"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layouts/app.html" %}
+{% block title %}Market · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Market Prices</h1>
+    <p class="muted text-sm mt-1">Mandi rates and nearby markets for your crops.</p>
+  </div>
+  <div id="market-prices" class="lg:grid-3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem"></div>
+  <div class="lg:grid-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+    <div class="card">
+      <h3 class="font-display font-semibold mb-2">Nearby mandis</h3>
+      <div id="nearby-mandis"></div>
+    </div>
+    <div class="card">
+      <h3 class="font-display font-semibold mb-2">Cotton 6-month trend</h3>
+      <div id="market-trend"></div>
+      <p class="text-sm muted mt-3">Tip: Sell when weekday arrivals are lower and arrivals dip after festival weeks.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

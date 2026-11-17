@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="auth-page">
+  <div class="auth-orb auth-orb-1"></div>
+  <div class="auth-orb auth-orb-2"></div>
+  <div class="w-full max-w-md relative">
+    <div class="flex items-center justify-center gap-2 mb-6">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 20h10"/><path d="M12 20V4"/><path d="M12 4c-3 4-6 5-8 5"/><path d="M12 8c3 3 5 4 7 4"/></svg>
+      <span class="font-display font-bold text-xl">KrishiSahay</span>
+    </div>
+    <div class="glass leaf-corner p-7 shadow-xl">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</div>
+<script>if (typeof KS !== 'undefined' && KS.requireAuth && false) {}</script>
+{% endblock %}

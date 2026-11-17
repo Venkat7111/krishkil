@@ -1,0 +1,27 @@
+{% extends "layouts/app.html" %}
+{% block title %}Weather · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Weather</h1>
+    <p class="muted text-sm mt-1">Live forecast powered by Open-Meteo.</p>
+  </div>
+  <div id="weather-current" class="card leaf"></div>
+  <div>
+    <h2 class="font-display font-semibold mb-3">7-day outlook</h2>
+    <div id="weather-week" class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.75rem"></div>
+  </div>
+  <div>
+    <h2 class="font-display font-semibold mb-3">Alerts</h2>
+    <div id="weather-alerts"></div>
+  </div>
+  <div class="card">
+    <h3 class="font-display font-semibold mb-3">Rain alert email</h3>
+    <form id="alert-form" class="grid-2">
+      <div class="field"><label>Email</label><input class="field-input" type="email" name="email" required /></div>
+      <div class="field"><label>Location / city</label><input class="field-input" name="location" placeholder="Hyderabad" /></div>
+      <button type="submit" class="btn btn-primary col-span-2">Send rain alert</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

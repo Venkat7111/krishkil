@@ -1,0 +1,13 @@
+{% extends "layouts/app.html" %}
+{% block title %}Government Schemes · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Government Schemes</h1>
+    <p class="muted text-sm mt-1">Find subsidies, insurance, and support programs.</p>
+  </div>
+  <input id="scheme-search" class="search-input" style="max-width:100%" placeholder="Search schemes..." />
+  <div id="scheme-cats" class="flex flex-wrap gap-2"></div>
+  <div id="schemes-list"></div>
+</div>
+{% endblock %}

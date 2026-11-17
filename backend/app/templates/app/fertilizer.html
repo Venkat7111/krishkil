@@ -1,0 +1,25 @@
+{% extends "layouts/app.html" %}
+{% block title %}Fertilizer · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <div>
+      <h1 class="font-display text-2xl font-bold">Fertilizer & PoP</h1>
+      <p class="muted text-sm mt-1">Search Package of Practices for NPK guidance.</p>
+    </div>
+    <a href="/chat/pop-pdf" target="_blank" class="btn btn-outline">Download PoP PDF</a>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    {% for crop in ['Rice', 'Cotton', 'Tomato', 'Chilli', 'Groundnut', 'Maize'] %}
+    <button type="button" class="suggestion-chip" data-crop-chip="{{ crop }}">{{ crop }}</button>
+    {% endfor %}
+  </div>
+  <input id="pop-search" class="search-input" style="max-width:100%" placeholder="Search PoP: urea dose for cotton flowering..." />
+  <div class="lg:grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+    <div class="card leaf text-center"><p class="text-xs muted">Nitrogen</p><p class="font-display text-2xl font-bold text-primary">N</p></div>
+    <div class="card leaf text-center"><p class="text-xs muted">Phosphorus</p><p class="font-display text-2xl font-bold text-secondary">P</p></div>
+    <div class="card leaf text-center"><p class="text-xs muted">Potassium</p><p class="font-display text-2xl font-bold text-accent">K</p></div>
+  </div>
+  <div id="pop-results"></div>
+</div>
+{% endblock %}

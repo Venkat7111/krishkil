@@ -1,0 +1,25 @@
+{% extends "layouts/app.html" %}
+{% block title %}Crop Recommendation · KrishiSahay{% endblock %}
+{% block content %}
+<div class="lg:grid-2 fade-up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Crop Recommendation</h1>
+    <p class="muted text-sm mt-1 mb-5">Enter your soil and climate data for an AI-matched crop.</p>
+    <form id="crop-form" class="grid-2">
+      <div class="field"><label>Soil Type</label><input class="field-input" name="soilType" placeholder="loamy" /></div>
+      <div class="field"><label>Nitrogen (N)</label><input class="field-input" name="nitrogen" type="number" step="any" /></div>
+      <div class="field"><label>Phosphorus (P)</label><input class="field-input" name="phosphorus" type="number" step="any" /></div>
+      <div class="field"><label>Potassium (K)</label><input class="field-input" name="potassium" type="number" step="any" /></div>
+      <div class="field"><label>Temperature (°C)</label><input class="field-input" name="temperature" type="number" step="any" value="25" /></div>
+      <div class="field"><label>Humidity (%)</label><input class="field-input" name="humidity" type="number" step="any" value="60" /></div>
+      <div class="field"><label>Rainfall (mm)</label><input class="field-input" name="rainfall" type="number" step="any" value="100" /></div>
+      <div class="field"><label>Soil pH</label><input class="field-input" name="ph" type="number" step="any" value="6.5" /></div>
+      <div class="field col-span-2"><label>Location</label><input class="field-input" name="location" placeholder="District / village" /></div>
+      <button type="submit" class="btn btn-primary col-span-2 mt-2">Get Recommendation</button>
+    </form>
+  </div>
+  <div id="crop-result">
+    <div class="card muted text-sm">Results will appear here after you submit soil data.</div>
+  </div>
+</div>
+{% endblock %}

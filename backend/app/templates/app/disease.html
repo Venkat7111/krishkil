@@ -1,0 +1,57 @@
+{% extends "layouts/app.html" %}
+{% block title %}Disease Detection · KrishiSahay{% endblock %}
+{% block content %}
+<div class="space-y-5 fade-up">
+  <div>
+    <h1 class="font-display text-2xl font-bold">Disease Detection</h1>
+    <p class="muted text-sm mt-1">Upload a leaf photo for AI diagnosis using our plant-disease model.</p>
+  </div>
+
+  <div class="lg:grid-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+    <div>
+      <div id="dropzone" class="dropzone">
+        <p class="font-semibold">Drop leaf image here</p>
+        <p class="text-sm muted mt-1">or click to browse</p>
+      </div>
+      <input id="file-input" type="file" accept="image/*" class="hidden" />
+      <input id="camera-input" type="file" accept="image/*" capture="environment" class="hidden" />
+      <div class="flex gap-2 mt-3 flex-wrap">
+        <button type="button" id="camera-btn" class="btn btn-outline">Use Camera</button>
+        <button type="button" id="analyze-btn" class="btn btn-primary">Analyze Leaf</button>
+      </div>
+      <div id="preview" class="hidden mt-4 text-center"></div>
+
+      <h3 class="font-display font-semibold mt-6 mb-2">Try a sample</h3>
+      <div class="sample-grid">
+        <button type="button" class="sample-card" data-name="tomato_early_blight.svg" data-sample="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%2315803d'/><path d='M150,30 C200,80 270,120 250,220 C230,280 150,270 150,270 C150,270 70,280 50,220 C30,120 100,80 150,30 Z' fill='%2322c55e'/><circle cx='120' cy='140' r='24' fill='%2378350f'/></svg>">
+          <img alt="Tomato Early Blight" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%2315803d'/><path d='M150,30 C200,80 270,120 250,220 C230,280 150,270 150,270 C150,270 70,280 50,220 C30,120 100,80 150,30 Z' fill='%2322c55e'/><circle cx='120' cy='140' r='24' fill='%2378350f'/></svg>" />
+          <p class="text-xs p-2">Tomato Early Blight</p>
+        </button>
+        <button type="button" class="sample-card" data-name="corn_rust.svg" data-sample="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%23166534'/><path d='M150,20 C180,90 220,180 200,270 C170,280 130,280 100,270 C80,180 120,90 150,20 Z' fill='%234ade80'/><ellipse cx='140' cy='100' rx='10' ry='25' fill='%23b45309'/></svg>">
+          <img alt="Corn Rust" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%23166534'/><path d='M150,20 C180,90 220,180 200,270 C170,280 130,280 100,270 C80,180 120,90 150,20 Z' fill='%234ade80'/><ellipse cx='140' cy='100' rx='10' ry='25' fill='%23b45309'/></svg>" />
+          <p class="text-xs p-2">Corn Rust</p>
+        </button>
+        <button type="button" class="sample-card" data-name="healthy_leaf.svg" data-sample="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%23052e16'/><path d='M150,20 C220,70 260,150 240,240 C200,280 100,280 60,240 C40,150 80,70 150,20 Z' fill='%2322c55e'/></svg>">
+          <img alt="Healthy Leaf" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='300' height='300' fill='%23052e16'/><path d='M150,20 C220,70 260,150 240,240 C200,280 100,280 60,240 C40,150 80,70 150,20 Z' fill='%2322c55e'/></svg>" />
+          <p class="text-xs p-2">Healthy Leaf</p>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <div id="analysis-loader" class="hidden card space-y-3">
+        <p class="font-bold text-sm">🔍 AI Analysis in Progress</p>
+        <p class="text-xs muted">Please wait while the model processes your leaf image...</p>
+        <div class="space-y-2 text-sm">
+          <div data-step>Image received & validated</div>
+          <div data-step>Detecting crop type...</div>
+          <div data-step>Identifying visible symptoms...</div>
+          <div data-step>Comparing with disease classes...</div>
+          <div data-step>Generating treatment plan...</div>
+        </div>
+      </div>
+      <div id="result" class="hidden"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

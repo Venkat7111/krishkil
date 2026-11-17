@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Welcome · KrishiSahay{% endblock %}
+{% block body %}
+<div class="min-h-screen flex flex-col">
+  <header class="flex items-center justify-between px-6 py-5">
+    <div class="flex items-center gap-2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 20h10"/><path d="M12 20V4"/><path d="M12 4c-3 4-6 5-8 5"/><path d="M12 8c3 3 5 4 7 4"/></svg>
+      <span class="font-display font-bold text-lg">KrishiSahay</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <select id="lang-select" class="select-sm">
+        <option value="en">🌐 English</option>
+        <option value="te">🇮🇳 తెలుగు</option>
+        <option value="hi">🇮🇳 हिन्दी</option>
+        <option value="ta">🇮🇳 தமிழ்</option>
+        <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+        <option value="mr">🇮🇳 मराठी</option>
+        <option value="bn">🇮🇳 বাংলা</option>
+      </select>
+      <button type="button" class="icon-btn" data-theme-toggle>◐</button>
+    </div>
+  </header>
+
+  <main class="flex-1 lg:grid-2 items-center px-6 max-w-6xl mx-auto w-full py-8" style="align-items:center">
+    <div class="fade-up">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold leading-tight">
+        <span data-i18n="welcome.heroLine1">Grow smarter with your</span>
+        <span class="text-primary" data-i18n="welcome.heroLine2">AI field assistant</span>
+      </h1>
+      <p class="mt-4 muted text-lg" data-i18n="welcome.subtitle">
+        Diagnose crop disease from a photo, get soil-matched crop picks, live mandi prices, and answers in your own language — all in one place.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/login" class="btn btn-primary btn-lg" data-i18n="welcome.login">Login</a>
+        <a href="/register" class="btn btn-outline btn-lg" data-i18n="welcome.register">Register</a>
+        <button type="button" id="guest-btn" class="btn btn-ghost btn-lg" data-i18n="welcome.guest">Continue as Guest</button>
+        <button type="button" id="pwa-install-btn-welcome" class="btn btn-outline btn-lg hidden">📲 Install App</button>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-6 text-sm muted">
+        <span class="flex items-center gap-1-5">🌿 <span data-i18n="welcome.featureDisease">Disease detection</span></span>
+        <span class="flex items-center gap-1-5">☀ <span data-i18n="welcome.featureWeather">Weather insights</span></span>
+        <span class="flex items-center gap-1-5">📈 <span data-i18n="welcome.featureMarket">Market prices</span></span>
+      </div>
+    </div>
+    <div class="relative hidden lg:block">
+      <svg viewBox="0 0 400 400" class="w-full" style="height:auto">
+        <circle cx="200" cy="200" r="180" fill="var(--color-secondary)" opacity="0.08" />
+        <path d="M200 340 C200 260 200 180 200 80 M200 200 C150 170 110 130 90 70 M200 230 C260 200 300 150 320 90 M200 130 C165 110 140 80 125 45 M200 150 C240 130 265 100 280 60"
+          stroke="var(--color-primary)" stroke-width="6" stroke-linecap="round" fill="none" />
+        <circle cx="200" cy="340" r="12" fill="var(--color-accent)" />
+      </svg>
+    </div>
+  </main>
+</div>
+{% endblock %}

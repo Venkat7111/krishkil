@@ -1,0 +1,65 @@
+{
+  "name": "KrishiSahay — Smart Farming AI",
+  "short_name": "KrishiSahay",
+  "description": "AI-powered agricultural assistant for crop recommendation, disease detection, weather forecasts, and mandi prices",
+  "id": "/app",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#064e3b",
+  "theme_color": "#16a34a",
+  "categories": ["agriculture", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/static/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Disease Detection",
+      "short_name": "Disease",
+      "url": "/app/disease-detection",
+      "description": "Upload a leaf photo for instant crop disease detection"
+    },
+    {
+      "name": "Crop Recommendation",
+      "short_name": "Crops",
+      "url": "/app/crop-recommendation",
+      "description": "Get AI recommendations based on your soil and climate"
+    },
+    {
+      "name": "Weather & Rain Alert",
+      "short_name": "Weather",
+      "url": "/app/weather",
+      "description": "Check localized agricultural weather and rain alerts"
+    },
+    {
+      "name": "AI Agronomist Chat",
+      "short_name": "Chat",
+      "url": "/app/chat",
+      "description": "Ask agricultural questions to KrishiSahay AI Agronomist"
+    },
+    {
+      "name": "Market Prices",
+      "short_name": "Market",
+      "url": "/app/market",
+      "description": "Live APMC Mandi commodity rates"
+    }
+  ]
+}

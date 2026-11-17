@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}KrishiSahay{% endblock %}</title>
+  <meta name="description" content="KrishiSahay — Smart Farming Powered by AI" />
+
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="/static/manifest.webmanifest" />
+  <meta name="theme-color" content="#16a34a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="KrishiSahay" />
+  <link rel="apple-touch-icon" href="/static/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192.png" />
+
+  <link rel="stylesheet" href="/static/css/app.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('ks_theme') || 'light';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  {% block head %}{% endblock %}
+</head>
+<body data-page="{{ page|default('') }}">
+  <!-- Offline Status Toast -->
+  <div id="offline-toast" class="offline-toast hidden" role="status" aria-live="polite">
+    <span class="pulse-dot"></span>
+    <span id="offline-toast-text">Offline Mode — viewing cached farm data</span>
+  </div>
+
+  {% block body %}{% endblock %}
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/pages.js"></script>
+  <script>
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(function(reg) {
+            console.log('[PWA] Service Worker registered on scope:', reg.scope);
+          })
+          .catch(function(err) {
+            console.warn('[PWA] Service Worker registration failed:', err);
+          });
+      });
+    }
+
+    // Offline / Online Connectivity Listeners
+    function updateOnlineStatus() {
+      var toast = document.getElementById('offline-toast');
+      var toastText = document.getElementById('offline-toast-text');
+      if (!toast) return;
+      if (!navigator.onLine) {
+        toast.classList.remove('hidden', 'online');
+        toast.classList.add('visible', 'offline');
+        if (toastText) toastText.textContent = 'Offline Mode — viewing cached farm data';
+      } else {
+        if (toast.classList.contains('visible')) {
+          toast.classList.remove('offline');
+          toast.classList.add('online');
+          if (toastText) toastText.textContent = 'Back Online — data synced';
+          setTimeout(function() {
+            toast.classList.remove('visible', 'online');
+            toast.classList.add('hidden');
+          }, 2500);
+        }
+      }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    document.addEventListener('DOMContentLoaded', updateOnlineStatus);
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
