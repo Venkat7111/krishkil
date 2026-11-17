@@ -7,6 +7,7 @@ import { AuthProvider } from '@/context/AuthContext'
 import { ToastProvider } from '@/components/common/Toast'
 import ErrorBoundary from '@/components/common/ErrorBoundary'
 import Loader from '@/components/common/Loader'
+import PWAInstallPrompt from '@/components/common/PWAInstallPrompt'
 import AuthLayout from '@/layouts/AuthLayout'
 import DashboardLayout from '@/layouts/DashboardLayout'
 import ProtectedRoute from '@/routes/ProtectedRoute'
@@ -45,6 +46,7 @@ export default function App() {
             <ToastProvider>
               <AuthProvider>
                 <BrowserRouter>
+                  <PWAInstallPrompt />
                   <Suspense fallback={<Loader label="Loading..." />}>
                     <Routes>
                       <Route path="/" element={<Splash />} />
