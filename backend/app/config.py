@@ -35,9 +35,13 @@ HF_TOKEN = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN", "")
 
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
 
-# Allow local dev and production deployment origins (Render / Vercel)
-raw_cors = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,*")
-CORS_ORIGINS = [o.strip() for o in raw_cors.split(",") if o.strip()]
+# Allow all origins by default — specific origins can be set via CORS_ORIGINS env var
+# Default "*" means any frontend (Vercel, localhost, etc.) can call this backend
+raw_cors = os.getenv("CORS_ORIGINS", "*")
+if raw_cors.strip() == "*":
+    CORS_ORIGINS = ["*"]
+else:
+    CORS_ORIGINS = [o.strip() for o in raw_cors.split(",") if o.strip()]
 
 # SMTP & Mail configuration for farmer weather/rain alerts
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")

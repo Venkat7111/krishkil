@@ -11,7 +11,7 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.10"
       - key: CORS_ORIGINS
-        value: "https://krishisahay.vercel.app,https://krishisahay-frontend.vercel.app"
+        value: "https://frontend-gamma-teal-42.vercel.app"
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
